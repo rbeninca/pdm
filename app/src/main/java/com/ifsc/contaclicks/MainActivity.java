@@ -26,13 +26,17 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         edpeso=findViewById(R.id.edpeso);
         edaltura=findViewById(R.id.edaltura);
-        tvresulado=findViewById(R.id.tvresultadoimc);
+
         buttonCalcular=findViewById(R.id.button);
         //define um tratamento para o click do botão
         buttonCalcular.setOnClickListener(v->{
             Intent intent = new Intent(getApplicationContext(), MainActivityB.class);
-            String msg= edpeso.getText().toString();
-            intent.putExtra("mensagem", msg);
+            Double peso= Double.parseDouble(edpeso.getText().toString());
+            Double altura= Double.parseDouble(edaltura.getText().toString());
+            //Definindi parametros para o bundle peso e altura
+            intent.putExtra("peso", peso);
+            intent.putExtra("peso", altura);
+
             startActivity(intent);
         });
     }
