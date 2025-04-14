@@ -20,7 +20,16 @@ public class MainActivityB extends AppCompatActivity {
         TextView tvIMC =findViewById(R.id.textViewIMC);
         TextView tvaltura =findViewById(R.id.tvAlturaResult);
         TextView tvpeso =findViewById(R.id.tvpesoResult);
-        ImageView imageView=findViewById(R.id.imageView2);
+        TextView tvDescricao =findViewById(R.id.textViewDescricaoIMC);
+        ImageView imageView=findViewById(R.id.imageViewPerfil);
+
+
+        // Definindo o valor do IMC no TextView
+        tvIMC.setText(String.format("%.2f", imc)+" kg/m²");
+        // Definindo o valor da altura no TextView
+        tvaltura.setText(String.format("%.2f", altura)+" m");
+        // Definindo o valor do peso no TextView
+        tvpeso.setText(String.format("%.2f", peso)+" kg");
 /*
 IMC abaixo de 18,5: Abaixo do peso
 IMC entre 18,5 e 24,9: Peso normal
@@ -30,12 +39,26 @@ IMC entre 35 e 39,9: Obesidade grau 2
 IMC acima de 40: Obesidade grau 3
  */
         if (imc<18.5){
-           imageView.setImageResource(R.drawable.abaixopeso);
-        }else{
-            if( imc<25.9){
-                imageView.setImageResource(R.drawable.normal);
-            }
+            tvDescricao.setText("Abaixo do peso");
+            imageView.setImageResource(R.drawable.abaixopeso);
+        }else if (imc>=18.5 && imc<=24.9){
+            tvDescricao.setText("Peso normal");
+            imageView.setImageResource(R.drawable.normal);
+        }else if (imc>=25 && imc<=29.9){
+            tvDescricao.setText("Sobrepeso");
+            imageView.setImageResource(R.drawable.sobrepeso);
+        }else if (imc>=30 && imc<=34.9){
+            tvDescricao.setText("Obesidade grau 1");
+            imageView.setImageResource(R.drawable.obesidade1);
+        }else if (imc>=35 && imc<=39.9){
+            tvDescricao.setText("Obesidade grau 2");
+            imageView.setImageResource(R.drawable.obesidade2);
+        }else {
+            tvDescricao.setText("Obesidade grau 3");
+            imageView.setImageResource(R.drawable.obesidade3);
         }
+        tvaltura.setText(altura.toString());
+        tvpeso.setText(peso.toString());
 
 
 

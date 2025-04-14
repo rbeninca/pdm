@@ -25,7 +25,9 @@ public class MainActivity extends AppCompatActivity {
         Log.d("ciclo de vida","metodo onCreate");
         setContentView(R.layout.activity_main);
         edpeso=findViewById(R.id.edpeso);
+        edpeso.setText("80");
         edaltura=findViewById(R.id.edaltura);
+        edaltura.setText("1.80");
 
         buttonCalcular=findViewById(R.id.button);
         //define um tratamento para o click do botão
@@ -35,7 +37,7 @@ public class MainActivity extends AppCompatActivity {
             Double altura= Double.parseDouble(edaltura.getText().toString());
             //Definindi parametros para o bundle peso e altura
             intent.putExtra("peso", peso);
-            intent.putExtra("peso", altura);
+            intent.putExtra("altura", altura);
 
             startActivity(intent);
         });

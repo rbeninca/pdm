@@ -13,24 +13,27 @@
         android:layout_height="wrap_content"
         android:text="Atividade B"
         android:textColor="#F44336"
-        android:textSize="24sp"
-        app:layout_constraintTop_toTopOf="@+id/textView6"
-        tools:layout_editor_absoluteX="145dp" />
+        android:textSize="32sp"
+        app:layout_constraintStart_toStartOf="@+id/tvAlturaResult"
+        app:layout_constraintTop_toTopOf="@+id/textView6" />
 
     <TextView
         android:id="@+id/tvAlturaResult"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toTopOf="@+id/textView5"
-        tools:layout_editor_absoluteX="146dp" />
+        android:layout_marginStart="64dp"
+        android:textSize="32sp"
+        app:layout_constraintStart_toEndOf="@+id/textView5"
+        app:layout_constraintTop_toTopOf="@+id/textView5" />
 
     <TextView
         android:id="@+id/tvpesoResult"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="TextView"
-        app:layout_constraintTop_toTopOf="@+id/textView4"
-        tools:layout_editor_absoluteX="146dp" />
+        android:textSize="32sp"
+        app:layout_constraintStart_toStartOf="@+id/tvAlturaResult"
+        app:layout_constraintTop_toTopOf="@+id/textView4" />
 
     <TextView
         android:id="@+id/textView4"
@@ -38,7 +41,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
         android:text="Altura"
-        android:textSize="16sp"
+        android:textSize="32sp"
         app:layout_constraintBottom_toTopOf="@+id/textView5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -48,8 +51,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
+
         android:text="Peso"
-        android:textSize="16sp"
+        android:textSize="32sp"
+
         app:layout_constraintBottom_toTopOf="@+id/textView6"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView4" />
@@ -60,18 +65,29 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
         android:text="Imc"
-        android:textSize="16sp"
-        app:layout_constraintBottom_toTopOf="@+id/imageView"
+        android:textSize="32sp"
+        app:layout_constraintBottom_toTopOf="@+id/imageViewPerfil"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView5" />
 
     <ImageView
-        android:id="@+id/imageView"
+        android:id="@+id/imageViewPerfil"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView6"
         app:srcCompat="@drawable/perfil" />
+
+    <TextView
+        android:id="@+id/textViewDescricaoIMC"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="TextView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageViewPerfil" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
