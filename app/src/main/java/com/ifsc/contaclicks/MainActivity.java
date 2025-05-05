@@ -2,7 +2,9 @@ package com.ifsc.contaclicks;
 
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ListView;
 import android.widget.TextView;
 
 import androidx.activity.EdgeToEdge;
@@ -13,24 +15,23 @@ import androidx.core.view.WindowInsetsCompat;
 
 public class MainActivity extends AppCompatActivity {
     int i=0;
-
+    String [] nomes= new String[] {"Anne","Fernanda","João1", "João2","João3"};
+    ListView lv;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        //Associando objeto interface a variavel local;
-        TextView tv=findViewById(R.id.textView);
-        tv.setText(getString(R.string.app_name));
-        Button b=findViewById(R.id.button);
-        b.setOnClickListener(v -> {//Seu codigo lindo aqui
-        });
-        b.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                tv.setText( Integer.toString(i)  );
-                i++;
-            }
-        });
 
+        //recupera listview
+        lv= findViewById(R.id.listview);
+
+        //Adaptador
+        ArrayAdapter<String> a=new ArrayAdapter(
+                this,
+                R.layout.item_lista,
+                R.id.textView,
+                nomes);
+
+        lv.setAdapter(a);
     }
 }
