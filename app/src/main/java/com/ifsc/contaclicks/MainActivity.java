@@ -17,7 +17,7 @@ import androidx.core.view.WindowInsetsCompat;
 
 public class MainActivity extends AppCompatActivity {
     int i=0;
-    String [] nomes= new String[] {"Mercurio","Venus","Terra","Marte","Jupter","Saturno","Urano","Netuno"};
+
     ListView lv;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,20 +27,19 @@ public class MainActivity extends AppCompatActivity {
         //recupera listview
         lv= findViewById(R.id.listview);
 
-        //Adaptador
-        ArrayAdapter<String> a=new ArrayAdapter(
-                this,
-                R.layout.item_lista,
-                R.id.textView,
-                nomes);
+        PlanetaDao planetaDao=new PlanetaDao();
 
-        lv.setAdapter(a);
+
+        AdapterPlaneta ap=new AdapterPlaneta(this,
+                R.layout.item_lista,
+                planetaDao.getPlatenas());
+        lv.setAdapter(ap);
 
         lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Intent i= new Intent(getApplicationContext(), PlanetaActivity.class);
-                i.putExtra("nome",nomes[position]);
+//                i.putExtra("nome",nomes[position]);
 
                 startActivity(i);
 
