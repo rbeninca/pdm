@@ -1,6 +1,7 @@
 package com.ifsc.contaclicks;
 
 import android.os.Bundle;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.activity.EdgeToEdge;
@@ -16,16 +17,15 @@ public class PlanetaActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_planeta);
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
-            Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
-            return insets;
-        });
 
-        Bundle b=getIntent().getExtras();
+        Bundle bundle=getIntent().getExtras();
+        Planeta p = (Planeta)bundle.getSerializable("planeta");
+        ImageView imageView = findViewById(R.id.imageViewPlaneta);
+        TextView textView =findViewById(R.id.textViewNomePlaneta);
 
-        TextView tv=findViewById(R.id.tvNomePlaneta);
-        tv.setText( b.get("nome").toString());
+        imageView.setImagemResource(p.imagem);
+        TextView.setText(p.nome);
+
 
     }
 }
