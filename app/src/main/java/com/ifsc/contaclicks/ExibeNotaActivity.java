@@ -52,6 +52,11 @@ public class ExibeNotaActivity extends AppCompatActivity {
             Toast.makeText(this, "Nota atualizada", Toast.LENGTH_SHORT).show();
             finish();
         }));
+        buttonDelete.setOnClickListener((view -> {
+            bancoDados.delete("notas", "id=?", new String[]{String.valueOf(nota.id)});
+            Toast.makeText(this, "Nota deletada", Toast.LENGTH_SHORT).show();
+            finish();
+        }));
 
         exibeNota(nota);
     }

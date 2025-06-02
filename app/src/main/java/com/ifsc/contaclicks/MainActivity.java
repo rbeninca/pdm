@@ -61,6 +61,12 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        listaNotas();
+    }
+
     public void inserirNota(String texto) {
         //bancoDados.execSQL("INSERT INTO notas (txt) VALUES ('" + texto + "');");
         ContentValues contentValues = new ContentValues();
@@ -87,6 +93,8 @@ public class MainActivity extends AppCompatActivity {
         cursor.close();
         atualizaListagemNotas(lista);
     }
+
+
 
 
 
