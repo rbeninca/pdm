@@ -68,6 +68,7 @@ public class ExibeNotaActivity extends AppCompatActivity {
     public void updateNota(){
         nota.texto= editText.getText().toString();
         ContentValues cv = new ContentValues();
+        cv.put("txt", nota.texto);
         bancoDados.update("notas", cv, "id=?", new String[]{String.valueOf(nota.id)});
     }
 
