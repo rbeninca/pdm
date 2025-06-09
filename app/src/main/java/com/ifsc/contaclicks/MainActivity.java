@@ -1,5 +1,10 @@
 package com.ifsc.contaclicks;
 
+import android.content.Context;
+import android.hardware.Sensor;
+import android.hardware.SensorEvent;
+import android.hardware.SensorEventListener;
+import android.hardware.SensorManager;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -11,26 +16,31 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements SensorEventListener{
     int i=0;
-
+    SensorManager mSensorManager;
+    Sensor sensor;
+    TextView tv;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        //Associando objeto interface a variavel local;
-        TextView tv=findViewById(R.id.textView);
-        tv.setText(getString(R.string.app_name));
-        Button b=findViewById(R.id.button);
-        b.setOnClickListener(v -> {//Seu codigo lindo aqui
-        });
-        b.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                tv.setText( Integer.toString(i)  );
-                i++;
-            }
-        });
+        tv=findViewById(R.id.textView);
+        mSensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
+
+        sensor=mSensorManager.getDefaultSensor(Sensor.TYPE_LIGHT);
+
+        mSensorManager.registerListener(this,sensor,SensorManager.SENSOR_DELAY_NORMAL);
+    }
+
+    @Override
+    public void onSensorChanged(SensorEvent sensorEvent) {
+        tv.setText(Float.toString(sensorEvent.values[0]));
 
     }
+    @Override
+    public void onAccuracyChanged(Sensor sensor, int i) {
+
+    }
+
 }
