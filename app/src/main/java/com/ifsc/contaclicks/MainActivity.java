@@ -6,36 +6,36 @@ import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
 import android.os.Bundle;
-import android.view.View;
-import android.widget.Button;
 import android.widget.TextView;
 
-import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
 
 public class MainActivity extends AppCompatActivity implements SensorEventListener{
     int i=0;
     SensorManager mSensorManager;
     Sensor sensor;
-    TextView tv;
+    TextView tx,ty,tz;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        tv=findViewById(R.id.textView);
+        tx =findViewById(R.id.textViewX);
+        ty =findViewById(R.id.textViewY);
+        tz =findViewById(R.id.textViewZ);
+
         mSensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
 
-        sensor=mSensorManager.getDefaultSensor(Sensor.TYPE_LIGHT);
+//        sensor=mSensorManager.getDefaultSensor(Sensor.TYPE_LIGHT);
+        sensor=mSensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
 
         mSensorManager.registerListener(this,sensor,SensorManager.SENSOR_DELAY_NORMAL);
     }
 
     @Override
     public void onSensorChanged(SensorEvent sensorEvent) {
-        tv.setText(Float.toString(sensorEvent.values[0]));
+        tx.setText(Float.toString(sensorEvent.values[0]));
+        ty.setText(Float.toString(sensorEvent.values[1]));
+        tz.setText(Float.toString(sensorEvent.values[2]));
 
     }
     @Override
